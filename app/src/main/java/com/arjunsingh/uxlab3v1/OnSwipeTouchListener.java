@@ -45,7 +45,7 @@ public boolean onFling(MotionEvent e1, MotionEvent e2 , float velocityX, float v
 {
     float distX=e2.getX()-e1.getX();
     float distY=e2.getY()-e1.getY();
-    if (Math.abs(distY)>Math.abs(distY) && Math.abs(distX)>SWIPE_DIST_THRESHOLD && Math.abs(velocityX)>SWIPE_VEL_THRESHOLD)
+    if (Math.abs(distX)>Math.abs(distY) && Math.abs(distX)>SWIPE_DIST_THRESHOLD && Math.abs(velocityX)>SWIPE_VEL_THRESHOLD)
     {
         if (distX>0)
         {
