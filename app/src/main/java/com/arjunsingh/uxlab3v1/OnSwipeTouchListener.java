@@ -9,13 +9,14 @@ import android.widget.Toast;
 
 public class OnSwipeTouchListener implements View.OnTouchListener
 {
-private final GestureDetector gestureDetector;
 private final Context context;
-
-    public OnSwipeTouchListener( Context context) {
-    gestureDetector=new GestureDetector(context,new GestureDetector());
+private final GestureDetector gestureDetector;
+public OnSwipeTouchListener(Context context)
+{
+    gestureDetector=new GestureDetector(context,new GestureListener());
     this.context=context;
-    }
+
+}
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -23,21 +24,62 @@ private final Context context;
     }
     public void onSwipeRight()
     {
-        Toast.makeText(context,"swiped right",Toast.LENGTH_SHORT).show();
-    }
-    public void onSwipeLeft()
+       Toast.makeText(context,"Swiped right!",Toast.LENGTH_SHORT).show();
+    } public void onSwipeLeft()
     {
-        Toast.makeText(context,"swiped left ",Toast.LENGTH_SHORT).show();
-    }
-    public void onSwupeUp()
+       Toast.makeText(context,"Swiped Left!",Toast.LENGTH_SHORT).show();
+    } public void onSwipeUp()
     {
-        Toast.makeText(context,"swiped Up",Toast.LENGTH_SHORT).show();
+       Toast.makeText(context,"Swiped Up!",Toast.LENGTH_SHORT).show();
     }
-
     public void onSwipeDown()
     {
-
-        Toast.makeText(context,"swiped Down",Toast.LENGTH_SHORT).show();
+       Toast.makeText(context,"Swiped Down!",Toast.LENGTH_SHORT).show();
     }
-    public class GestureList
+
+    private final class  GestureListener extends GestureDetector.SimpleOnGestureListener
+{
+private static  final int SWIPE_DIST_THRESHOLD=100;
+private static  final int SWIPE_VEL_THRESHOLD=100;
+public boolean onFling(MotionEvent e1, MotionEvent e2 , float velocityX, float velocityY)
+{
+    float distX=e2.getX()-e1.getX();
+    float distY=e2.getY()-e1.getY();
+    if (Math.abs(distY)>Math.abs(distY) && Math.abs(distX)>SWIPE_DIST_THRESHOLD && Math.abs(velocityX)>SWIPE_VEL_THRESHOLD)
+    {
+        if (distX>0)
+        {
+            onSwipeRight();
+        }
+        else
+        {
+            onSwipeLeft();
+        }
+        return true;
+    }
+    else if(Math.abs(distX)<Math.abs(distY)
+            && Math.abs(distY)>SWIPE_DIST_THRESHOLD
+            && Math.abs(velocityY)>SWIPE_VEL_THRESHOLD)
+    {
+        if (distY>0)
+        {
+            onSwipeDown();
+        }
+        else
+        {
+            onSwipeUp();
+        }
+        return true;
+    }
+    return false;
+
+
+} // end of fling
+    @Override
+    public boolean onDown(MotionEvent e)
+    {
+        return true;
+    }
+
+}
 }
