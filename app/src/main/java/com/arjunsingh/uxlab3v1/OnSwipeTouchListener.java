@@ -39,5 +39,5 @@ private final Context context;
 
         Toast.makeText(context,"swiped Down",Toast.LENGTH_SHORT).show();
     }
-    public class Gest
+    public class GestureList
 }
