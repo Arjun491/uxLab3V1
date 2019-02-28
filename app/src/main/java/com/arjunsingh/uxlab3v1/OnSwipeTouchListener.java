@@ -78,7 +78,7 @@ public boolean onFling(MotionEvent e1, MotionEvent e2 , float velocityX, float v
     @Override
     public boolean onDown(MotionEvent e)
     {
-        return true;
+        return false;
     }
 
 }
