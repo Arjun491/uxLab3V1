@@ -131,12 +131,12 @@ public class MainActivity extends AppCompatActivity {
                 Drawable img=getDrawable(R.drawable.puppy);
                 img.setBounds(0,0,100,100);
                 textView.setCompoundDrawables(img,null,null,null);
-                textView.setBackgroundColor(Color.parseColor("#000000"));
+                textView.setBackgroundColor(Color.parseColor("#007800"));
                 textView.setTextColor(Color.WHITE);
                 textView.setTextSize(Dimension.SP,18);
                 textView.setMaxLines(3);
                 Toast.makeText(MainActivity.this,textView.getText(),Toast.LENGTH_SHORT).show();
-                textView.setVisibility(View.GONE);
+                textView.setVisibility(View.VISIBLE);
             }
         });
     }
